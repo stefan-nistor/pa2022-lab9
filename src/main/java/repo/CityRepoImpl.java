@@ -4,6 +4,7 @@ import entities.CityEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 public class CityRepoImpl implements CityRepo{
 
@@ -27,5 +28,12 @@ public class CityRepoImpl implements CityRepo{
         return (CityEntity) entityManager.createQuery("SELECT c FROM CityEntity c WHERE c.name=:name")
                 .setParameter("name", name)
                 .getSingleResult();
+    }
+
+    @Override
+    public List<CityEntity> findByCountry(String name) {
+        return entityManager.createNamedQuery("CityEntity.findByCountry")
+                .setParameter("country", name)
+                .getResultList();
     }
 }

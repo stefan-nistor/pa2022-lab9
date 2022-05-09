@@ -3,6 +3,7 @@ package entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name = "CityEntity")
 @Table(name = "cities")
@@ -12,14 +13,16 @@ import javax.persistence.*;
 @Setter
 @Data
 @Builder
-public class CityEntity {
+@NamedQueries({
+    @NamedQuery(name = "CityEntity.findByCountry", query = "SELECT c FROM cities c WHERE c.country = ?1")
+})
+public class CityEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
     String name;
-    String country;
     boolean isCapital;
     Double latitude;
     Double longitude;
+    String country;
 }

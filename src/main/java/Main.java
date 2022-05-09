@@ -6,7 +6,8 @@ import javax.persistence.Persistence;
 
 public class Main {
     public static void testJPA() {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("lab9");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Default");
+
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         CityEntity cityEntity = CityEntity.builder()

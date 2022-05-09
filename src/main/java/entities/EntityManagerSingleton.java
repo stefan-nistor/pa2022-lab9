@@ -15,7 +15,8 @@ public class EntityManagerSingleton {
     private final String PERSISTENCE_UNIT_NAME = "lab9";
     private EntityManagerFactory entityManagerFactory;
 
-    private EntityManagerSingleton() {}
+    private EntityManagerSingleton() {
+    }
 
     public static EntityManagerSingleton getInstance() {
         return instance;
@@ -23,7 +24,7 @@ public class EntityManagerSingleton {
 
     public void createEntityManagerFactory() {
         this.entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-        log.info("Persistence started at: {}",  new java.util.Date());
+        log.info("Persistence started at: {}", new java.util.Date());
     }
 
     public void closeEntityManagerFactory() {
